@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Proudly made by Jose Linares ( jose-linares.com )
+
+# License: (full text here: http://www.wtfpl.net )
+
+#                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+#       TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
+#                0. You just DO WHAT THE FUCK YOU WANT TO.
+
+
+
 function usage
 {
 	echo "a"
@@ -9,7 +19,7 @@ function usage
 
 function decrypt
 {
-	decrypt_md5decryption $1
+	decrypt_md5myaddr $1
 
 }
 
@@ -55,7 +65,7 @@ function decrypt_hashkiller		# TODO cuando haya 64 en not_found, solicitar captc
 	fi
 }
 
-function check_hash_md5			# Return 0 si es un md5 valido TODO
+function check_hash_md5			# Return 0 if valid md5
 {
 	if [[ $(echo $1 | egrep '([a-fA-F0-9])' | wc -c) -eq 32 ]] ; then
 		return 0
@@ -64,22 +74,24 @@ function check_hash_md5			# Return 0 si es un md5 valido TODO
 	fi
 }
 
-decrypt 'dca57be223efc2741bc98adce0ec5141'
+#decrypt 'dca57be223efc2741bc98adce0ec5141'
 not_found=$(mktemp)
+hash_file="/dev/stdin"
 
-if [[ -r $1 ]] ; then		#Check if the first parameter is a readable file
-	#redireccionar fichero a entrada estandar	
-else
-	if [[ check_hash $1 ]] ; then
+if [[ $# -gt 0 ]] ; then
+
+	if [[ -r $1 ]] ; then		#Check if the first parameter is a readable file
+		hash_file=$1
+	else
 		for hash in $@ ; do
 			decrypt $hash
 		done
 	fi
+
 fi
+
 
 while read line ; do
 	decrypt $line
-
-
-done		# < read from stdinput
+done   < "$hash_file"
 
