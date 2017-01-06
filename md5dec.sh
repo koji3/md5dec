@@ -2,25 +2,28 @@
 
 # Proudly made by Jose Linares ( jose-linares.com )
 
+#	usage examples:
+
+#		md5dec.sh dca57be223efc2741bc98adce0ec5141
+#		md5dec.sh hash_file			# One hash per line
+#		echo '21b6ddcd02b500c914fd104830440dd1' | md5dec.sh
+#		cat hash_file | md5dec.sh
+#		md5dec.sh < hash_file
+
 # License: (full text here: http://www.wtfpl.net )
 
 #                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
 #       TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
 #                0. You just DO WHAT THE FUCK YOU WANT TO.
 
-
-
-function usage
-{
-	echo "a"
-
-}
-
+# TODO : Add vervosity
+#		 Add hashkiller.co.uk tool
 
 function decrypt
 {
-	decrypt_md5myaddr $1
-
+	if [[ check_hash_md5 $1 ]] ; then
+		decrypt_md5myaddr $1
+	fi
 }
 
 
@@ -57,7 +60,7 @@ function decrypt_nitrxgen
 
 function decrypt_hashkiller		# TODO cuando haya 64 en not_found, solicitar captcha y resolverlos todos del tiron
 {
-	found=$(curl -s 'http://www.nitrxgen.net/md5db/'$1)
+	found=$(curl -s 'hashkiller.co.uk/'$1)
 	if [[ ${found:-NULL} == "NULL" ]] ; then
 			echo $1 >> $not_found
 	else
