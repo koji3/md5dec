@@ -11,11 +11,11 @@ Please, if you are heavy user of this platforms, donate them!
 
 ### Usage examples
 
-	md5dec.sh dca57be223efc2741bc98adce0ec5141
-	md5dec.sh hash_file			# One hash per line
-	echo '21b6ddcd02b500c914fd104830440dd1' | md5dec.sh
-	cat hash_file | md5dec.sh
-	md5dec.sh < hash_file
+	$ md5dec.sh dca57be223efc2741bc98adce0ec5141
+	$ md5dec.sh hash_file			# One hash per line
+	$ echo '21b6ddcd02b500c914fd104830440dd1' | md5dec.sh
+	$ cat hash_file | md5dec.sh
+	$ md5dec.sh < hash_file
 
 
 ### License 
