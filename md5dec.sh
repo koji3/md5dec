@@ -55,10 +55,13 @@ function decrypt_hashkiller		# TODO cuando haya 64 en not_found, solicitar captc
 	fi
 }
 
-function check_hash			# Return 0 si es un md5 valido TODO
+function check_hash_md5			# Return 0 si es un md5 valido TODO
 {
-
-
+	if [[ $(echo $1 | egrep '([a-fA-F0-9])' | wc -c) -eq 32 ]] ; then
+		return 0
+	else
+		return 1
+	fi
 }
 
 decrypt 'dca57be223efc2741bc98adce0ec5141'
