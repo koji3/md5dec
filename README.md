@@ -1,11 +1,11 @@
 # md5dec
 
 CLI tool for md5 online cracking searching in online databases. Tries with:
-	- http://www.nitrxgen.net
-	- http://md5decryption.com
-	- http://md5.my-addr.com
-	- [FUTURE] http://hashkiller.co.uk
-	- You know others? Tell me!
+- http://www.nitrxgen.net
+- http://md5decryption.com
+- http://md5.my-addr.com
+- [FUTURE] http://hashkiller.co.uk
+- You know others? Tell me!
 
 Please, if you are heavy user of this platforms, donate them!
 
